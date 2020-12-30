@@ -15,6 +15,12 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // large text for top bar title text
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        // set title for top bar
+        title = "Storm Viewer"
+        
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)

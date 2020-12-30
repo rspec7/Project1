@@ -14,21 +14,29 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //overrides large title text inherited from our ViewController
+        navigationItem.largeTitleDisplayMode = .never
+        
+        // shows picture filename in top bar
+        title = selectedImage
 
+        // checks and unwraps the optional selectedImage
         if let imageToLoad = selectedImage {
             imageView.image = UIImage(named: imageToLoad)
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // hides top bar when user clicks on image
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnTap = true
     }
-    */
+    
+    // shows top bar again if user taps
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
+    }
 
 }
