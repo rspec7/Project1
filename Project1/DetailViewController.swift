@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        final_features
         //overrides large title text inherited from our ViewController
         navigationItem.largeTitleDisplayMode = .never
         
@@ -38,5 +39,4 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
     }
-
 }
