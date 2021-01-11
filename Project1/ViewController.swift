@@ -15,10 +15,10 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // large text for top bar title text
+        // Challenge 1 of 3 - Large text for top bar title text
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        // set title for top bar
+        // Set title for top bar
         title = "Storm Viewer"
         
         let fm = FileManager.default
@@ -31,7 +31,12 @@ class ViewController: UITableViewController {
             }
         }
         
+        // Test print array to console to ensure the append above is working
         print(pictures)
+        
+        // Challenge 2 of 3 - Sort array items alphabetically
+        pictures.sort()
+        
     }
     
     // Dynamically sets the number of rows by counting items in array
@@ -47,10 +52,14 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 1: try loading the "Detail" view controller and typcasting it to be DetailViewController
+        // 1: try loading the "Detail view controller" and typcasting it to be DetailViewController
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             // 2: success! Set its selectedImage property
             vc.selectedImage = pictures[indexPath.row]
+            
+            // Challenge 3 of 3 - Send selected photo number and total photo count to DetailViewConroller via Segue
+            vc.selectedPictureNumber = indexPath.row + 1
+            vc.totalPictures = pictures.count
             
             // 3: now push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)
