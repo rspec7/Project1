@@ -15,10 +15,10 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // large text for top bar title text
+        // Challenge 1 of 3 - Large text for top bar title text
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        // set title for top bar
+        // Set title for top bar
         title = "Storm Viewer"
         
         let fm = FileManager.default
@@ -31,7 +31,11 @@ class ViewController: UITableViewController {
             }
         }
         
+        // Test print array to console to ensure the append above is working
         print(pictures)
+        
+        // Challenge 2 of 3 - Sort array items alphabetically
+        pictures.sort()
     }
     
     // Dynamically sets the number of rows by counting items in array
