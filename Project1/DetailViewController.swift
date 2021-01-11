@@ -11,15 +11,17 @@ class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     
     var selectedImage: String?
+    var selectedPictureNumber = 0
+    var totalPictures = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //overrides large title text inherited from our ViewController
+        // Overrides large title text inherited from our ViewController
         navigationItem.largeTitleDisplayMode = .never
         
-        // shows picture filename in top bar
-        title = selectedImage
+        // Shows text "picture x of y" in the title bar
+        title = "Picture \(selectedPictureNumber) of \(totalPictures)"
 
         // checks and unwraps the optional selectedImage
         if let imageToLoad = selectedImage {

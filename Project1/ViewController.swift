@@ -36,6 +36,7 @@ class ViewController: UITableViewController {
         
         // Challenge 2 of 3 - Sort array items alphabetically
         pictures.sort()
+        
     }
     
     // Dynamically sets the number of rows by counting items in array
@@ -51,10 +52,14 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 1: try loading the "Detail" view controller and typcasting it to be DetailViewController
+        // 1: try loading the "Detail view controller" and typcasting it to be DetailViewController
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             // 2: success! Set its selectedImage property
             vc.selectedImage = pictures[indexPath.row]
+            
+            // Challenge 3 of 3 - Send selected photo number and total photo count to DetailViewConroller via Segue
+            vc.selectedPictureNumber = indexPath.row + 1
+            vc.totalPictures = pictures.count
             
             // 3: now push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)
